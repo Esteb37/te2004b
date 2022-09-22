@@ -14,27 +14,30 @@
 //
 // =================================================================
 
-#include <iostream>
-#include <iomanip>
-#include <omp.h>
 #include "utils.h"
+#include <iomanip>
+#include <iostream>
+#include <omp.h>
 
-const int SIZE = 100000000; //1e8
+const int SIZE = 100000000; // 1e8
 
 using namespace std;
 
-double sumArray(int *array, int size) {
+double sumArray(int *array, int size)
+{
 	double acum;
 	int i;
 
 	acum = 0;
-	for (i = 0; i < size; i++) {
+	for (i = 0; i < size; i++)
+	{
 		acum += array[i];
 	}
 	return acum;
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[])
+{
 	int i, j, *a;
 	double ms, result;
 
@@ -44,7 +47,8 @@ int main(int argc, char* argv[]) {
 
 	std::cout << "Starting...\n";
 	ms = 0;
-	for (i = 0; i < N; i++) {
+	for (i = 0; i < N; i++)
+	{
 		start_timer();
 
 		result = sumArray(a, SIZE);
@@ -54,6 +58,6 @@ int main(int argc, char* argv[]) {
 	std::cout << "sum = " << setprecision(5) << result << "\n";
 	std::cout << "avg time =  " << setprecision(5) << (ms / N) << "\n";
 
-	delete [] a;
+	delete[] a;
 	return 0;
 }

@@ -14,25 +14,28 @@
 //
 // =================================================================
 
-#include <iostream>
-#include <iomanip>
-#include <climits>
-#include <algorithm>
 #include "utils.h"
+#include <algorithm>
+#include <climits>
+#include <iomanip>
+#include <iostream>
 
-const int SIZE = 100000000; //1e8
+const int SIZE = 100000000; // 1e8
 
 using namespace std;
 
-int minValue(int *array, int size) {
+int minValue(int *array, int size)
+{
 	int result = INT_MAX;
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size; i++)
+	{
 		result = min(result, array[i]);
 	}
 	return result;
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[])
+{
 	int *a, pos, result;
 	double ms;
 
@@ -47,7 +50,8 @@ int main(int argc, char* argv[]) {
 
 	cout << "Starting..." << endl;
 	ms = 0;
-	for (int i = 0; i < N; i++) {
+	for (int i = 0; i < N; i++)
+	{
 		start_timer();
 
 		result = minValue(a, SIZE);
@@ -57,6 +61,6 @@ int main(int argc, char* argv[]) {
 	cout << "result = " << setprecision(5) << result << endl;
 	cout << "avg time = " << setprecision(5) << (ms / N) << " ms" << endl;
 
-	delete [] a;
+	delete[] a;
 	return 0;
 }

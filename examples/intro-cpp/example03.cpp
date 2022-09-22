@@ -14,39 +14,44 @@
 //
 // =================================================================
 
-#include <iostream>
-#include <iomanip>
+#include "utils.h"
 #include <algorithm>
 #include <cmath>
+#include <iomanip>
+#include <iostream>
 #include <omp.h>
-#include "utils.h"
 
 const double PI = 3.14159265;
-const int RECTS = 100000000; //1e8
+const int RECTS = 100000000; // 1e8
 
 using namespace std;
 
-double integration(double a, double b, double (*fn) (double)) {
+double integration(double a, double b, double (*fn)(double))
+{
 	int i;
 	double high, dx, acum, x;
 
 	x = min(a, b);
-	dx = (max(a, b) - min(a, b)) / (double) RECTS;
+	dx = (max(a, b) - min(a, b)) / (double)RECTS;
 	acum = 0;
-	#pragma omp parallel for shared(x, dx) private(i) reduction(+:acum)
-	for (i = 0; i < RECTS; i++) {
+#pragma omp parallel for shared(x, dx) private(i) reduction(+ \
+															: acum)
+	for (i = 0; i < RECTS; i++)
+	{
 		acum += fn(x + (i * dx));
 	}
 	return (acum * dx);
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[])
+{
 	int i, j;
 	double ms, result;
 
 	std::cout << "Starting...\n";
 	ms = 0;
-	for (i = 0; i < N; i++) {
+	for (i = 0; i < N; i++)
+	{
 		start_timer();
 
 		result = integration(0, PI, sin);

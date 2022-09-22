@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"iomanip": "cpp",
+		"omp.h": "c"
+	}
+}
