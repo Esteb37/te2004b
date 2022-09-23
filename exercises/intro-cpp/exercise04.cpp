@@ -40,6 +40,7 @@ int main(int argc, char *argv[])
 
 		result = 0;
 
+		// pi = sqrt ( 6 * sum(i = 1-N) (1 / i^2) )
 		for (long long j = 1; j <= LIMIT; j++)
 		{
 			result += 1.0 / (j * j);

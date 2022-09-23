@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
 	{
 		start_timer();
 
+		// Sum true (1) when even, false (0) when odd
 		result += *(a + i) % 2 == 0;
 
 		ms += stop_timer();

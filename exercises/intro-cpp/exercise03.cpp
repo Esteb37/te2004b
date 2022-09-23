@@ -43,10 +43,13 @@ int main(int argc, char *argv[])
 	{
 		start_timer();
 
+		// For each element in the array
 		for (int j = 0; j < SIZE; j++)
 		{
+			// Asume it is the biggest
 			int count = SIZE - 1;
 
+			// Subtract how many elements are bigger than it
 			for (int k = 0; k < SIZE; k++)
 			{
 				if (a[j] < a[k] || (a[j] == a[k] && j < k))
@@ -55,6 +58,7 @@ int main(int argc, char *argv[])
 				}
 			}
 
+			// Place it in the position according to the count
 			b[count] = a[j];
 		}
 

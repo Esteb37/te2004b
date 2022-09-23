@@ -44,17 +44,23 @@ int main(int argc, char *argv[])
 
 		result = 0;
 
+		// For each number from 2 (since 1 and 0 are not prime) to MAXIMUM
 		for (int i = 2; i <= MAXIMUM; i++)
 		{
 			bool isPrime = true;
+
+			// Check all numbers from 2 to the square root of the current number
 			for (int j = 2; j <= sqrt(i); j++)
 			{
+				// If i is divisible by j, it is not prime
 				if (i % j == 0)
 				{
 					isPrime = false;
 					break;
 				}
 			}
+
+			// If the number is prime, add it to the result
 			if (isPrime)
 			{
 				result += i;
