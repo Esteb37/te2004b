@@ -1,6 +1,11 @@
 {
 	"files.associations": {
 		"iomanip": "cpp",
-		"omp.h": "c"
+		"omp.h": "c",
+		"cstdlib": "cpp",
+		"cmath": "cpp",
+		"array": "cpp",
+		"initializer_list": "cpp",
+		"utility": "cpp"
 	}
 }

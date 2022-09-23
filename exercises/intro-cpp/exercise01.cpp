@@ -1,7 +1,8 @@
 // =================================================================
 //
 // File: exercise01.cpp
-// Author(s):
+// Author(s): Esteban Padilla Cerdio - A01703068
+//            Hilda Olivia Beltrán Acosta - A01251916
 // Description: This file contains the code to count the number of
 //				even numbers within an array. The time this implementation
 //				takes will be used as the basis to calculate the
@@ -13,20 +14,22 @@
 //
 // =================================================================
 
-#include <iostream>
-#include <iomanip>
-#include <climits>
-#include <algorithm>
 #include "utils.h"
+#include <algorithm>
+#include <climits>
+#include <iomanip>
+#include <iostream>
 
-const int SIZE = 100000000; //1e8
+const int SIZE = 100000000; // 1e8
 
 using namespace std;
 
 // implement your code here
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[])
+{
 	int *a;
+	int result;
 	double ms;
 
 	a = new int[SIZE];
@@ -35,16 +38,17 @@ int main(int argc, char* argv[]) {
 
 	cout << "Starting..." << endl;
 	ms = 0;
-	for (int i = 0; i < N; i++) {
+	for (int i = 0; i < N; i++)
+	{
 		start_timer();
 
-		// call your code here
+		result += *(a + i) % 2 == 0;
 
 		ms += stop_timer();
 	}
 	cout << "result = " << setprecision(5) << result << "\n";
 	cout << "avg time = " << setprecision(5) << (ms / N) << " ms" << endl;
 
-	delete [] a;
+	delete[] a;
 	return 0;
 }
