@@ -29,7 +29,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 	int *a;
-	int result;
+	long result;
 	double ms;
 
 	a = new int[SIZE];

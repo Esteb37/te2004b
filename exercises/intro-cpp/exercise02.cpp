@@ -22,7 +22,7 @@
 #include <iomanip>
 #include <iostream>
 
-#define MAXIMUM 100000 // 1e6
+#define MAXIMUM 1000000 // 1e6
 
 using namespace std;
 
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	cout << "Starting..." << endl;
 	ms = 0;
 
-	long result;
+	long long result;
 
 	for (int i = 0; i < N; i++)
 	{
@@ -64,8 +64,8 @@ int main(int argc, char *argv[])
 		ms += stop_timer();
 	}
 
-	cout << "result = " << setprecision(5) << result << "\n";
-	cout << "avg time = " << setprecision(5) << (ms / N) << " ms" << endl;
+	cout << "result = " << result << "\n";
+	cout << "avg time = " << (ms / N) << " ms" << endl;
 
 	return 0;
 }

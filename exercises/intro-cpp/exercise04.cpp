@@ -21,7 +21,7 @@
 #include <iomanip>
 #include <iostream>
 
-const int LIMIT = 65000; // 1e8
+const int LIMIT = 100000000; // 1e8
 
 using namespace std;
 
@@ -29,7 +29,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-	double result;
+	long double result;
 	double ms;
 
 	cout << "Starting..." << endl;
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
 		result = 0;
 
-		for (int j = 1; j <= LIMIT; j++)
+		for (long long j = 1; j <= LIMIT; j++)
 		{
 			result += 1.0 / (j * j);
 		}
