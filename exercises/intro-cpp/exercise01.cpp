@@ -29,7 +29,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 	int *a;
-	long result;
+	long result = 0;
 	double ms;
 
 	a = new int[SIZE];
@@ -42,8 +42,11 @@ int main(int argc, char *argv[])
 	{
 		start_timer();
 
-		// Sum true (1) when even, false (0) when odd
-		result += *(a + i) % 2 == 0;
+		for (int j = 0; j < SIZE; j++)
+		{
+			// Sum true (1) when even, false (0) when odd
+			result += *(a + i) % 2 == 0;
+		}
 
 		ms += stop_timer();
 	}
