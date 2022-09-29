@@ -35,6 +35,7 @@ if __name__ == "__main__":
         startTime = time.time() * 1000
 
         for j, item_j in enumerate(array):
+
             # Asume it is the biggest
             count = SIZE - 1
 
@@ -50,7 +51,7 @@ if __name__ == "__main__":
 
         ms = ms + (endTime - startTime)
 
-        # Check that the array is sorted
+    # Check that the array is sorted
     isSorted = True
     for i in range(SIZE-1):
         if result[i] > result[i + 1]:

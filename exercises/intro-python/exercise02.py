@@ -35,10 +35,16 @@ if __name__ == "__main__":
         # Sum of all prime numbers less than or equal to MAXIMUM
         for num in range(2, MAXIMUM+1):
             isPrime = True
-            for i in range(2, num):
-                if num % i == 0:
+
+            # Check all numbers from 2 to the square root of the current number
+            for div in range(2, int(num**(1/2))+1):
+
+                # If num is divisible by div, it is not prime
+                if num % div == 0:
                     isPrime = False
                     break
+
+            # If the number is prime, add it to the result
             if isPrime:
                 result += num
 
