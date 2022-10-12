@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 		cout << "The array is not sorted" << endl;
 	}
 
-	cout << "avg time = " << setprecision(5) << (ms / N) << " ms" << endl;
+	cout << "avg time = " << fixed << setprecision(5) << (ms / N) << " ms" << endl;
 
 	delete[] a;
 	delete[] b;

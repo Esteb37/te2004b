@@ -19,7 +19,7 @@
 #include "utils.h"
 #include <omp.h>
 
-const int LIMIT = 100000000; //1e8
+const int LIMIT = 1000000; //1e6
 
 using namespace std;
 
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 
 		ms += stop_timer();
 	}
-	cout << "result = " << setprecision(40) << result << "\n";
+	cout << "result = " << fixed <<  setprecision(10) << result << "\n";
 	cout << "avg time = " << setprecision(5) << (ms / N) << " ms" << endl;
 
 	return 0;

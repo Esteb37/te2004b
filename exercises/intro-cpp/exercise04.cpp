@@ -21,7 +21,7 @@
 #include <iomanip>
 #include <iostream>
 
-const int LIMIT = 100000000; // 1e8
+const int LIMIT = 1000000; // 1e6
 
 using namespace std;
 
@@ -50,8 +50,13 @@ int main(int argc, char *argv[])
 
 		ms += stop_timer();
 	}
+<<<<<<< HEAD
 	cout << "result = " << setprecision(10) << result << "\n";
 	cout << "avg time = " << setprecision(10) << (ms / N) << " ms" << endl;
+	== == == =
+				 cout << "result = " << fixed << setprecision(10) << result << "\n";
+	cout << "avg time = " << setprecision(5) << (ms / N) << " ms" << endl;
+>>>>>>> 7518a1397c1d2682a3780a9d66fad3a64f4d9ff8
 
 	return 0;
 }

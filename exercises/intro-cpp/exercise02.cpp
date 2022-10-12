@@ -70,8 +70,8 @@ int main(int argc, char *argv[])
 		ms += stop_timer();
 	}
 
-	cout << "result = " << result << "\n";
-	cout << "avg time = " << (ms / N) << " ms" << endl;
+	cout << "result = " << fixed << setprecision(0) << result << "\n";
+	cout << "avg time = " << fixed << setprecision(5) << (ms / N) << " ms" << endl;
 
 	return 0;
 }

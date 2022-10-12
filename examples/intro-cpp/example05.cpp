@@ -29,18 +29,31 @@ void swap(int *A, int i, int j)
 	A[j] = aux;
 }
 
-int *bubbleSort(int *A, int size)
+int *oddEvenSort(int *A, int size)
 {
 	int *B = new int[size];
 
-	memcpy(B, A, sizeof(int) * SIZE);
-	for (int i = size - 1; i > 0; i--)
+	memcpy(B, A, sizeof(int) * size);
+	for (int step = 0; step < size; step++)
 	{
-		for (int j = 0; j < i; j++)
+		if (step % 2 == 0)
 		{
-			if (B[j] > B[j + 1])
+			for (int i = 0; i <= size - 2; i += 2)
 			{
-				swap(B, j, j + 1);
+				if (B[i] > B[i + 1])
+				{
+					swap(B, i, i + 1);
+				}
+			}
+		}
+		else
+		{
+			for (int i = 1; i <= size - 2; i += 2)
+			{
+				if (B[i] > B[i + 1])
+				{
+					swap(B, i, i + 1);
+				}
 			}
 		}
 	}
@@ -62,7 +75,7 @@ int main(int argc, char *argv[])
 	{
 		start_timer();
 
-		b = bubbleSort(a, SIZE);
+		b = oddEvenSort(a, SIZE);
 
 		ms += stop_timer();
 
