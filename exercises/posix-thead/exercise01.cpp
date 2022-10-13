@@ -12,39 +12,93 @@
 //
 // =================================================================
 
-#include <iostream>
-#include <iomanip>
-#include <climits>
-#include <algorithm>
-#include <omp.h>
 #include "utils.h"
+#include <algorithm>
+#include <climits>
+#include <iomanip>
+#include <iostream>
+#include <omp.h>
+#include <pthread.h>
 
-const int SIZE = 1000000000; //1e9
+namespace CST
+{
+	const int SIZE = 100000000; // 1e9
+}
+
+const int THREADS = 4;
+
+typedef struct
+{
+	int start, end; // [start, end)
+	int *arr;
+} Block;
+
+void *countEven(void *param)
+{
+	int *acum;
+	Block *block;
+	int i;
+
+	block = (Block *)param;
+	acum = new int;
+	(*acum) = 0;
+	for (i = block->start; i < block->end; i++)
+	{
+		if (block->arr[i] % 2 == 0)
+		{
+			(*acum)++;
+		}
+	}
+	return ((void **)acum);
+}
 
 using namespace std;
 
 // implement your code here
 
-int main(int argc, char* argv[]) {
-	int *a;
-	double ms;
+int main(int argc, char *argv[])
+{
+	int *a, block_size, i, j;
+	double ms, result, *acum;
+	Block blocks[THREADS];
+	pthread_t tids[THREADS];
 
-	a = new int[SIZE];
-	fill_array(a, SIZE);
+	a = new int[CST::SIZE];
+	fill_array(a, CST::SIZE);
 	display_array("a", a);
+
+	block_size = CST::SIZE / THREADS;
+	for (i = 0; i < THREADS; i++)
+	{
+		blocks[i].arr = a;
+		blocks[i].start = i * block_size;
+		if (i != (THREADS - 1))
+		{
+			blocks[i].end = blocks[i].start + block_size;
+		}
+		else
+		{
+			blocks[i].end = CST::SIZE;
+		}
+	}
 
 	cout << "Starting..." << endl;
 	ms = 0;
-	for (int i = 0; i < N; i++) {
+	for (int i = 0; i < NUM; i++)
+	{
 		start_timer();
 
-		// call your code here
+		result = 0;
+		for (j = 0; j < THREADS; j++)
+		{
+			pthread_create(&tids[j], NULL, countEven, (void *)&blocks[j]);
+		}
 
 		ms += stop_timer();
 	}
 	cout << "result = " << fixed << setprecision(0) << result << "\n";
-	cout << "avg time = " <<  fixed << setprecision(5) << (ms / N) << " ms" << endl;
+	cout << "avg time = " << fixed << setprecision(5) << (ms / NUM) << " ms" << endl;
 
-	delete [] a;
+	delete[] a;
 	return 0;
 }
