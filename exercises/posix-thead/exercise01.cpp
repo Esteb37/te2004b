@@ -1,7 +1,8 @@
 // =================================================================
 //
 // File: exercise01.cpp
-// Author(s):
+// Author(s): Esteban Padilla Cerdio - A01703068
+//            Hilda Olivia Beltrán Acosta - A01251916
 // Description: This file contains the code to count the number of
 //				even numbers within an array using pthreads.
 //              To compile: g++ exercise01.cpp -lpthread
@@ -20,11 +21,10 @@
 #include <omp.h>
 #include <pthread.h>
 
-namespace CST
-{
-	const int SIZE = 100000000; // 1e9
-}
+using namespace std;
 
+// Se cambió el nombre de la variable porque SIZE ya existe en pthread
+const int A_SIZE = 100000000; // 1e9
 const int THREADS = 4;
 
 typedef struct
@@ -52,50 +52,56 @@ void *countEven(void *param)
 	return ((void **)acum);
 }
 
-using namespace std;
-
 // implement your code here
 
 int main(int argc, char *argv[])
 {
-	int *a, block_size, i, j;
-	double ms, result, *acum;
+	int *a, block_size, i, j, result, *acum;
+	;
+	double ms;
 	Block blocks[THREADS];
 	pthread_t tids[THREADS];
 
-	a = new int[CST::SIZE];
-	fill_array(a, CST::SIZE);
+	a = new int[A_SIZE];
+	fill_array(a, A_SIZE);
 	display_array("a", a);
 
-	block_size = CST::SIZE / THREADS;
+	block_size = A_SIZE / THREADS;
 	for (i = 0; i < THREADS; i++)
 	{
 		blocks[i].arr = a;
 		blocks[i].start = i * block_size;
 		if (i != (THREADS - 1))
 		{
-			blocks[i].end = blocks[i].start + block_size;
+			blocks[i].end = (i + 1) * block_size;
 		}
 		else
 		{
-			blocks[i].end = CST::SIZE;
+			blocks[i].end = A_SIZE;
 		}
 	}
 
 	cout << "Starting..." << endl;
 	ms = 0;
-	for (int i = 0; i < NUM; i++)
+	for (j = 0; j < NUM; j++)
 	{
 		start_timer();
 
 		result = 0;
-		for (j = 0; j < THREADS; j++)
+		for (i = 0; i < THREADS; i++)
 		{
-			pthread_create(&tids[j], NULL, countEven, (void *)&blocks[j]);
+			pthread_create(&tids[i], NULL, countEven, (void *)&blocks[i]);
+		}
+		for (i = 0; i < THREADS; i++)
+		{
+			pthread_join(tids[i], (void **)&acum);
+			result += (*acum);
+			delete acum;
 		}
 
 		ms += stop_timer();
 	}
+
 	cout << "result = " << fixed << setprecision(0) << result << "\n";
 	cout << "avg time = " << fixed << setprecision(5) << (ms / NUM) << " ms" << endl;
 

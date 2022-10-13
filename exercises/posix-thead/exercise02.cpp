@@ -35,12 +35,12 @@ typedef struct
 
 void *sumPrimes(void *param)
 {
-	int *acum;
+	long long int *acum;
 	Block *block;
 	int i, j, limit;
 
 	block = (Block *)param;
-	acum = new int;
+	acum = new long long int;
 	(*acum) = 0;
 	for (i = block->start; i < block->end; i++)
 	{
@@ -63,21 +63,19 @@ void *sumPrimes(void *param)
 int main(int argc, char *argv[])
 {
 	int block_size, i, j;
-	double ms, result, *acum;
+	double ms;
+	long long int result, *acum;
 	Block blocks[THREADS];
 	pthread_t tids[THREADS];
-
-	cout << "Starting..." << endl;
-	ms = 0;
 
 	block_size = MAXIMUM / THREADS;
 
 	for (i = 0; i < THREADS; i++)
 	{
-		blocks[i].start = i * block_size;
+		blocks[i].start = i * block_size + 2;
 		if (i != (THREADS - 1))
 		{
-			blocks[i].end = blocks[i].start + block_size;
+			blocks[i].end = (i + 1) * block_size;
 		}
 		else
 		{
@@ -85,18 +83,28 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	for (int i = 0; i < NUM; i++)
+	cout << "Starting..." << endl;
+	ms = 0;
+
+	for (j = 0; j < NUM; j++)
 	{
 		start_timer();
 
 		result = 0;
-		for (j = 0; j < THREADS; j++)
+		for (i = 0; i < THREADS; i++)
 		{
-			pthread_create(&tids[j], NULL, sumPrimes, (void *)&blocks[j]);
+			pthread_create(&tids[i], NULL, sumPrimes, (void *)&blocks[i]);
+		}
+		for (i = 0; i < THREADS; i++)
+		{
+			pthread_join(tids[i], (void **)&acum);
+			result += (*acum);
+			delete acum;
 		}
 
 		ms += stop_timer();
 	}
+
 	cout << "result = " << fixed << setprecision(0) << result << "\n";
 	cout << "avg time = " << fixed << setprecision(5) << (ms / NUM) << " ms" << endl;
 
