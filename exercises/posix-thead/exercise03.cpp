@@ -66,7 +66,7 @@ void *enumerationSort(void *param)
 int main(int argc, char *argv[])
 {
 
-	int *a, *b, *agkl;
+	int *a, *b;
 
 	a = new int[A_SIZE];
 	b = new int[A_SIZE];
