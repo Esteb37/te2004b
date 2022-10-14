@@ -117,6 +117,7 @@ void display_array(const char *text, int *array)
 	int i;
 
 	printf("%s = [%4i", text, array[0]);
+
 	for (i = 1; i < DISPLAY; i++)
 	{
 		printf(",%4i", array[i]);

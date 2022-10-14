@@ -25,7 +25,7 @@ using namespace std;
 
 // Se cambió el nombre de la variable porque SIZE ya existe en pthread
 const int A_SIZE = 100000000; // 1e9
-const int THREADS = 4;
+const int THREADS = 1;
 
 typedef struct
 {
@@ -57,7 +57,6 @@ void *countEven(void *param)
 int main(int argc, char *argv[])
 {
 	int *a, block_size, i, j, result, *acum;
-	;
 	double ms;
 	Block blocks[THREADS];
 	pthread_t tids[THREADS];

@@ -1,0 +1,15 @@
+Ejercicio 1:
+	1 hilo:  378.42ms
+	8 hilos: 100.98ms
+
+Ejercicio 2:
+	1 hilo:  330.08ms
+	8 hilos: 65.81ms
+
+Ejercicio 3:
+	1 hilo:  12949.41ms
+	8 hilos: 4231.45ms
+
+Ejercicio 4:
+	1 hilo: 14.13ms
+	8 hilos: 7.04ms

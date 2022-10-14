@@ -1,7 +1,8 @@
 // =================================================================
 //
 // File: exercise02.cpp
-// Author(s):
+// Author(s): Esteban Padilla Cerdio - A01703068
+//            Hilda Olivia Beltrán Acosta - A01251916
 // Description: This file contains the code that performs the sum of
 //				all prime numbers less than or equal to MAXIMUM using
 //				pthreads.
@@ -26,7 +27,7 @@
 
 using namespace std;
 
-const int THREADS = 4;
+const int THREADS = 8;
 
 typedef struct
 {
