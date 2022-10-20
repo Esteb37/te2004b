@@ -21,7 +21,7 @@
 #include <pthread.h>
 
 const int A_SIZE = 50000; // 5e4
-const int THREADS = 1;
+const int THREADS = 8;
 
 using namespace std;
 
@@ -58,7 +58,7 @@ void *enumerationSort(void *param)
 		block->arr_b[count] = block->arr_a[j];
 	}
 
-	return ((void **)block->arr_b);
+	return (void ***)block->arr_b;
 }
 
 // implement your code here
@@ -116,11 +116,6 @@ int main(int argc, char *argv[])
 		}
 
 		ms += stop_timer();
-
-		if (j != NUM - 1)
-		{
-			delete[] b;
-		}
 	}
 
 	display_array("after", b);

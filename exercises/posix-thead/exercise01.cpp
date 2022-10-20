@@ -25,7 +25,7 @@ using namespace std;
 
 // Se cambió el nombre de la variable porque SIZE ya existe en pthread
 const int A_SIZE = 100000000; // 1e9
-const int THREADS = 1;
+const int THREADS = 20;
 
 typedef struct
 {

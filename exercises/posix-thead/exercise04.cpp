@@ -24,7 +24,7 @@ const int LIMIT = 1000000; // 1e6
 
 using namespace std;
 
-const int THREADS = 8;
+const int THREADS = 20;
 
 // implement your code here
 

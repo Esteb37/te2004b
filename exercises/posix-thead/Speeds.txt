@@ -1,15 +1,19 @@
 Ejercicio 1:
 	1 hilo:  378.42ms
 	8 hilos: 100.98ms
+	Speedup: 3.74
 
 Ejercicio 2:
 	1 hilo:  330.08ms
 	8 hilos: 65.81ms
+	Speedup: 5.02
 
 Ejercicio 3:
 	1 hilo:  12949.41ms
 	8 hilos: 4231.45ms
+	Speedup: 3.06
 
 Ejercicio 4:
 	1 hilo: 14.13ms
 	8 hilos: 7.04ms
+	Speedup: 20.07

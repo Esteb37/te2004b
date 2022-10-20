@@ -27,7 +27,7 @@
 
 using namespace std;
 
-const int THREADS = 8;
+const int THREADS = 20;
 
 typedef struct
 {
