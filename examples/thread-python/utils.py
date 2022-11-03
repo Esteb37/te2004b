@@ -53,4 +53,4 @@ def displayArray(text, array):
             print(array[i], end=", ")
         else:
             print(array[i], end= "")
-    print("]")
+    print("...]")
