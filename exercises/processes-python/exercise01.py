@@ -18,7 +18,7 @@ import time
 import multiprocessing as mp
 import threading
 
-SIZE = 10000000  # 1e8
+SIZE = 100000000  # 1e8
 
 # Place your code here
 

@@ -17,7 +17,7 @@ import time
 import multiprocessing as mp
 import threading
 
-SIZE = 10000  # 1e5
+SIZE = 100000  # 1e5
 
 
 def enumSort(array, start, end, queue):
