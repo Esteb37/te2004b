@@ -1,6 +1,6 @@
 # =================================================================
 ##
-## File: exercise03.py
+# File: exercise03.py
 # Author(s): Esteban Padilla Cerdio - A01703068
 # 			 Hilda Olivia Beltrán Acosta - A01251916
 # Description: This file contains the code that implements the
@@ -17,13 +17,12 @@ import time
 import multiprocessing as mp
 import threading
 
-SIZE = 100000  # 1e5
+SIZE = 10000  # 1e5
 
 
 def enumSort(array, start, end, queue):
 
     positions = []
-
     for j in range(start, end):
         count = 0
         for i in range(0, SIZE):

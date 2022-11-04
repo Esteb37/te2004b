@@ -23,17 +23,17 @@ SIZE = 1000000  # 1e6
 
 
 def partialSum(start, end, queue):
-    sum = 0
+    suma = 0
     for i in range(start, end):
-        sum += 1 / (i ** 2)
-    queue.put(sum)
+        suma += 1 / (i ** 2)
+    queue.put(suma)
 
 
 if __name__ == "__main__":
 
     print("Starting...")
 
-    CORES = 10
+    CORES = 1
 
     startTime = endTime = ms = 0
     blockSize = SIZE // CORES
@@ -51,13 +51,9 @@ if __name__ == "__main__":
                 end = (i + 1) * blockSize
             else:
                 end = SIZE
-
-            processes.append(mp.Process(
-                target=partialSum, args=(start, end, queue)))
-            processes[i].start()
-
-        for i in range(CORES):
-            processes[i].join()
+            process = mp.Process(target=partialSum, args=(start, end, queue))
+            processes.append(process)
+            process.start()
 
         result = 0
         for i in range(CORES):
@@ -70,4 +66,4 @@ if __name__ == "__main__":
         ms = ms + (endTime - startTime)
 
     print("result = ", result)
-    print(CORES, "avg time = ", (ms / utils.N), " ms")
+    print("avg time = ", (ms / utils.N), " ms")
