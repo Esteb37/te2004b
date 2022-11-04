@@ -1,7 +1,8 @@
 # =================================================================
 ##
 # File: exercise02.py
-# Author(s):
+# Author(s): Esteban Padilla Cerdio - A01703068
+# 			 Hilda Olivia Beltrán Acosta - A01251916
 # Description: This file contains the code that performs the sum of
 # all prime numbers less than or equal to MAXIMUM
 # using processes in Python.
@@ -80,4 +81,4 @@ if __name__ == "__main__":
         ms = ms + (endTime - startTime)
 
     print("sum = ", result)
-    print(CORES, "avg time = ", (ms / utils.N), " ms")
+    print("avg time = ", (ms / utils.N), " ms")

@@ -1,7 +1,8 @@
 # =================================================================
 ##
 ## File: exercise01.py
-# Author(s):
+# Author(s): Esteban Padilla Cerdio - A01703068
+# 			 Hilda Olivia Beltrán Acosta - A01251916
 # Description: This file contains the code to count the number of
 # even numbers within an array using processes in
 # Python.
