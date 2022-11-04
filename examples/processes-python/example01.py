@@ -1,24 +1,25 @@
-## =================================================================
+# =================================================================
 ##
 ## File: example01.py
-## Author: Pedro Perez
-## Description: This file contains the code that adds all the
-##				elements of an integer array using processeses in
-##              Python.
+# Author: Pedro Perez
+# Description: This file contains the code that adds all the
+# elements of an integer array using processeses in
+# Python.
 ##
-## Copyright (c) 2022 by Tecnologico de Monterrey.
-## All Rights Reserved. May be reproduced for any non-commercial
-## purpose.
+# Copyright (c) 2022 by Tecnologico de Monterrey.
+# All Rights Reserved. May be reproduced for any non-commercial
+# purpose.
 ##
-## =================================================================
+# =================================================================
 import utils
 import time
 import multiprocessing as mp
 import threading
 
-# CORES = mp.cpu_count() 
-CORES = 4
-SIZE = 100000000 ##1e8
+CORES = 1
+
+SIZE = 10000000  # 1e8
+
 
 def partialSumArray(start, end, array, queue):
     acum = 0
@@ -27,9 +28,10 @@ def partialSumArray(start, end, array, queue):
 
     queue.put(acum)
 
+
 if __name__ == "__main__":
     array = [0] * SIZE
-    
+
     utils.fillArray(array)
     utils.displayArray("array", array)
 
@@ -48,10 +50,11 @@ if __name__ == "__main__":
                 end = (i + 1) * blockSize
             else:
                 end = SIZE
-            process = mp.Process(target=partialSumArray, args=(start, end, array, queue,))            
+            process = mp.Process(target=partialSumArray,
+                                 args=(start, end, array, queue,))
             processes.append(process)
             process.start()
-                
+
         result = 0
         for i in range(CORES):
             result += queue.get()
@@ -59,6 +62,7 @@ if __name__ == "__main__":
         endTime = time.time() * 1000
 
         ms = ms + (endTime - startTime)
-	
+        print("Execution time: %.5f ms" % (endTime - startTime))
+
     print("sum = ", result)
     print("avg time = ", (ms / utils.N), " ms")

@@ -1,0 +1,18 @@
+Ejercicio 1:
+    1 core: 1126.3
+    10 cores: 5988.47
+    Speedup: 0.188
+    Es mejor usar 1 core que 10 cores.
+
+Ejercicio 2:
+    1 core: 1363.80
+    10 cores: 541.29
+    Speedup: 2.51
+    Es mejor usar 10 cores que 1 core.
+
+
+Ejercicio 4:
+    1 core: 347.19
+    10 cores: 376.79
+    Speedup: 0.92
+    Es mejor usar 1 core que 10 cores.
