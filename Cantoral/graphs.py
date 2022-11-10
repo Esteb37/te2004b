@@ -93,6 +93,57 @@ class DirectedGraph:
         print(f'Vertex {name} does not exist')
         return None
 
+    @dispatch(Vertex, Vertex)
+    def bfs(self, start: Vertex, end: Vertex):
+        '''
+        Breadth-first search algorithm
+        '''
+        queue = []
+        queue.append([start])
+        while queue:
+            path = queue.pop(0)
+            node = path[-1]
+            if node == end:
+                return path
+            for adjacent in self.neighbors(node):
+
+                if adjacent not in path:
+                    new_path = list(path)
+                    new_path.append(adjacent)
+                    queue.append(new_path)
+
+    @dispatch(str, str)
+    def bfs(self, start: str, end: str):
+        '''
+        Breadth-first search algorithm
+        '''
+        return self.bfs(self.get_vertex(start), self.get_vertex(end))
+
+    @dispatch(Vertex, Vertex)
+    def dfs(self, start: Vertex, end: Vertex):
+        '''
+        Depth-first search algorithm
+        '''
+        stack = []
+        stack.append([start])
+        while stack:
+            path = stack.pop(-1)
+            node = path[-1]
+            if node == end:
+                return path
+            for adjacent in self.neighbors(node):
+                if adjacent not in path:
+                    new_path = list(path)
+                    new_path.append(adjacent)
+                    stack.append(new_path)
+
+    @dispatch(str, str)
+    def dfs(self, start: str, end: str):
+        '''
+        Depth-first search algorithm
+        '''
+        return self.dfs(self.get_vertex(start), self.get_vertex(end))
+
     def __call__(self, name: str):
         return self.get_vertex(name)
 
@@ -244,15 +295,21 @@ def build_graph():
 
     g.add_edge("Yucatan", "Quintana Roo")
 
-    for state in states:
-        print(state, ": ")
-        for neighbor in g.neighbors(state):
-            print(neighbor.get_name())
-
-        print("----")
-
     return g
 
 
 if __name__ == '__main__':
     g = build_graph()
+
+    print("BFS")
+    path = g.bfs("Chiapas", "Baja California Sur")
+    for state in path:
+        print(state)
+
+    print("-" * 20, end="\n\n")
+
+    print("DFS")
+    path = g.dfs("Quintana Roo", "Baja California Sur")
+
+    for state in path:
+        print(state)
