@@ -98,6 +98,12 @@ class DirectedGraph:
         '''
         Breadth-first search algorithm
         '''
+        if not self.is_vertex_in(start):
+            assert ValueError(f'Vertex {start.get_name()} does not exist')
+
+        if not self.is_vertex_in(end):
+            assert ValueError(f'Vertex {end.get_name()} does not exist')
+
         queue = []
         queue.append([start])
         while queue:
@@ -124,6 +130,12 @@ class DirectedGraph:
         '''
         Depth-first search algorithm
         '''
+        if not self.is_vertex_in(start):
+            assert ValueError(f'Vertex {start.get_name()} does not exist')
+
+        if not self.is_vertex_in(end):
+            assert ValueError(f'Vertex {end.get_name()} does not exist')
+
         stack = []
         stack.append([start])
         while stack:
@@ -301,15 +313,18 @@ def build_graph():
 if __name__ == '__main__':
     g = build_graph()
 
+    state_1 = input('Enter the name of the first state: ')
+    state_2 = input('Enter the name of the second state: ')
+
     print("BFS")
-    path = g.bfs("Chiapas", "Baja California Sur")
+    path = g.bfs(state_1, state_2)
     for state in path:
         print(state)
 
+    print("\n")
     print("-" * 20, end="\n\n")
 
     print("DFS")
-    path = g.dfs("Quintana Roo", "Baja California Sur")
-
+    path = g.dfs(state_1, state_2)
     for state in path:
         print(state)
